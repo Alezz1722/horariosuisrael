@@ -45,7 +45,7 @@ class LoginControlador extends Controller
         catch(\Exception  $e)
         {
             //return response()->json(['error'=>$e->getMessage()]);
-            return back()->with('mensajeError', "Hubo un error. Intenta mas tarde.");
+            return back()->with('mensajeError', $e->getMessage());
         }
     }
 }
