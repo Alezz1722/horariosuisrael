@@ -1,0 +1,41 @@
+
+
+.bootstrap-datetimepicker-widget tr:hover {
+    background-color: #808080;
+}
+
+input,.drpPeriodo {
+    width: 100%;
+  }
+
+.drpPeriodo .dropdown-toggle{
+    text-align: right;
+}
+
+
+
+  table.responsive-table th {
+    background: #eee;
+  }
+
+
+
+  table.responsive-table tr > td,
+  table.responsive-table th {
+    text-align: left;
+  }
+
+  table {
+    text-align: left;
+    position: relative;
+    border-collapse: collapse;
+  }
+
+  th {
+    background-color: white;
+    position: sticky;
+    top: 50px;
+    z-index: 100;
+    /**box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);**/
+    background-color: #edecec;
+}

@@ -1,0 +1,15 @@
+body {
+    padding-top: 70px;
+}
+
+.swal-button--confirm{
+    background-color: #007bff;
+  }
+
+  .swal-modal .swal-text {
+    text-align: center;
+}
+
+#importaExcel .modal-dialog {
+    max-width: 100%;
+}
