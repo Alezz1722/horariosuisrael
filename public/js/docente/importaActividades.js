@@ -101,6 +101,7 @@ $(document).ready(function () {
         })
     })
 
+
     function analizaExcel() {
         var cont = 0, dias = {};
         if (_result !== '') {
