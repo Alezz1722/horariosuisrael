@@ -30,7 +30,7 @@ class LoginControlador extends Controller
         try {
             $usuario = Usuario::select('*')
             ->where('correoUsuario', '=',$request->correo)
-            ->where('contrasenaUsuario', '=',$request->contrasena)
+            ->where('contrasenaUsuario', '=',md5($request->contrasena))
             ->get()->first();
 
             if($usuario){//Cuando fue encontrado el usuario
