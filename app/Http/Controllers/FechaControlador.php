@@ -128,6 +128,7 @@ class FechaControlador extends Controller
                             $fHFinFecha = Carbon::parse($request->horaFinFecha);
                             $listadofecha->horaFinListadoFecha = $fHFinFecha->format('H:i');
                             $listadofecha->idFecha = $fecha->idFecha;
+                            $listadofecha->idUsuario = session('usuarioConectado')['idUsuario'];
                             $listadofecha->estadoListadoFecha = "ACTIVA";
                             $listadofecha->observacionListadoFecha = "";
                             $listadofecha->save();
@@ -145,6 +146,7 @@ class FechaControlador extends Controller
                 $fHFinFecha = Carbon::parse($request->horaFinFecha);
                 $listadofecha->horaFinListadoFecha = $fHFinFecha->format('H:i');
                 $listadofecha->idFecha = $fecha->idFecha;
+                $listadofecha->idUsuario = session('usuarioConectado')['idUsuario'];
                 $listadofecha->estadoListadoFecha = "ACTIVA";
                 $listadofecha->observacionListadoFecha = "";
                 $listadofecha->save();
@@ -234,6 +236,7 @@ class FechaControlador extends Controller
                             $fHFinFecha = Carbon::parse($request->horaFinFecha);
                             $listadofecha->horaFinListadoFecha = $fHFinFecha->format('H:i');
                             $listadofecha->idFecha = $fecha->idFecha;
+                            $listadofecha->idUsuario = session('usuarioConectado')['idUsuario'];
                             $listadofecha->observacionListadoFecha = "";
                             $listadofecha->estadoListadoFecha = "ACTIVA";
                             $listadofecha->save();
@@ -255,6 +258,7 @@ class FechaControlador extends Controller
                         $fHFinFecha = Carbon::parse($request->horaFinFecha);
                         $listadofecha->horaFinListadoFecha = $fHFinFecha->format('H:i');
                         $listadofecha->idFecha = $fecha->idFecha;
+                        $listadofecha->idUsuario = session('usuarioConectado')['idUsuario'];
                         $listadofecha->observacionListadoFecha = "";
                         $listadofecha->estadoListadoFecha = "ACTIVA";
                         $listadofecha->save();

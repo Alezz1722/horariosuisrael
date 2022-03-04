@@ -21,7 +21,7 @@
     </div>
 </div>
 <br>
-<div class="container">
+<div class="container-fluid">
     <table class="table table-bordered w-100" id="dashboardDocente">
         <thead><tr></tr></thead>
         <tbody></tbody>

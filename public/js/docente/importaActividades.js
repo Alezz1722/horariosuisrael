@@ -1,54 +1,60 @@
 
 $(document).ready(function () {
 
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     var _result = "";
 
     $("#submitFormPeriodo").click(function () {
         $('.tablaExcel tbody').html("");
-        $(".conjuntoExcel").attr("hidden",true);
+        $(".conjuntoExcel").attr("hidden", true);
 
         if (($(".idPeriodo").val() != "") && (analizaExcel() == 0)) {
-            $(".conjuntoExcel").attr("hidden",true);
-            var tr  = "";
+            $(".conjuntoExcel").attr("hidden", true);
+            var tr = "";
 
             $.when(
                 $.each(_result, function (key, value) {
                     tr = tr + '<tr>';
                     tr = tr + '<td>';
-                    tr = tr +(key+1);
-                    tr=  tr +'</td>';
+                    tr = tr + (key + 1);
+                    tr = tr + '</td>';
                     tr = tr + '<td>';
-                    tr = tr +value.DIA;
-                    tr=  tr +'</td>';
+                    tr = tr + value.DIA;
+                    tr = tr + '</td>';
                     tr = tr + '<td>';
-                    tr = tr +value.HORA;
-                    tr=  tr +'</td>';
+                    tr = tr + value.HORA;
+                    tr = tr + '</td>';
                     tr = tr + '<td>';
-                    tr = tr +value.MATERIA;
-                    tr=  tr +'</td>';
+                    tr = tr + value.MATERIA;
+                    tr = tr + '</td>';
                     tr = tr + '<td>';
-                    tr = tr +value.AULA;
-                    tr=  tr +'</td>';
+                    tr = tr + value.AULA;
+                    tr = tr + '</td>';
                     tr = tr + '<td>';
-                    tr = tr +value.LUGAR;
-                    tr=  tr +'</td>';
+                    tr = tr + value.LUGAR;
+                    tr = tr + '</td>';
                     tr = tr + '<tr>';
                 })
-            ).done(function(done) {
+            ).done(function (done) {
                 $('.tablaExcel tbody').html(tr);
-                $(".conjuntoExcel").attr("hidden",false);
+                $(".conjuntoExcel").attr("hidden", false);
             });
 
 
         } else {
-            if(_result =="" || $(".idPeriodo").val() == ""){
+            if (_result == "" || $(".idPeriodo").val() == "") {
                 swal({
                     title: "Error",
                     text: "Por favor selecciona el periodo y/o carga el archivo excel",
                     icon: "error",
                     type: "error"
                 })
-            }else{
+            } else {
                 swal({
                     title: "Error",
                     text: "Por favor revisa el archivo Excel, ya que no cumple con el formato establecido",
@@ -60,40 +66,38 @@ $(document).ready(function () {
     })
 
     $("#enviaData").click(function () {
-        console.log(_result);
-        console.log($(".idPeriodo").val());
-        console.log({actividades : _result , idperiodo : $(".idPeriodo").val()})
         swal({
             title: "Confirmación de importación",
             text: "Esta seguro de registrar las actividades de archivo Excel anteriormente detalladas ? ",
             icon: "warning",
             buttons: [
-              'Cancelar',
-              'Actualizar Estado'
+                'Cancelar',
+                'Importar actividades'
             ],
-        }).then(function(isConfirm) {
+        }).then(function (isConfirm) {
             if (isConfirm) {
-                console.log(_result);
+                console.log({ actividades: _result, idperiodo: $(".idPeriodo").val() })
                 $.ajax({
                     url: '/docente/importarExcel/crear/',
-                    type:'POST',
+                    type: 'POST',
                     dataType: 'JSON',
-                    data: informacion,
-                    success: function(data) {
+                    data: { actividades: _result, idperiodo: $(".idPeriodo").val() },
+                    success: function (data) {
                         console.log(data);
                         /**
-                        if(data.success){
+                        if (data.success) {
                             $('.alert-danger').hide();
                             swal({
                                 title: "Horario editado",
                                 text: "El estado del horario fue asignado exitosamente!",
                                 icon: "success",
                                 type: "success"
-                            }).then(function(){
+                            }).then(function () {
                                 obtieneInformacion();
                             }
                             );
-                        }*/
+                        }
+                        */
                     }
                 });
             }
@@ -132,11 +136,11 @@ $(document).ready(function () {
                     //Validacion horas
 
                     var horas = (value.HORA).split(" ");
-                    if((typeof horas[0] != 'undefined') && (typeof horas[1] != 'undefined')){
-                        if(!validateHhMm(horas[0])|| !validateHhMm(horas[1])){
+                    if ((typeof horas[0] != 'undefined') && (typeof horas[1] != 'undefined')) {
+                        if (!validateHhMm(horas[0]) || !validateHhMm(horas[1])) {
                             cont++;
                         }
-                    }else{
+                    } else {
                         cont++;
                     }
                 }

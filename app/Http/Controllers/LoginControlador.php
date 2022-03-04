@@ -13,7 +13,7 @@ class LoginControlador extends Controller
 
     public function cerrarSesion(){
         session()->pull('usuarioConectado');
-        return view('welcome');
+        return redirect()->route('menu');
     }
 
 

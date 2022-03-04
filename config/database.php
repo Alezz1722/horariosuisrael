@@ -46,11 +46,11 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', 'eanl4i1omny740jw.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'),
+            'host' => env('DB_HOST', 'localhost'), //eanl4i1omny740jw.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'dw23psak8dmu5svu'),
-            'username' => env('DB_USERNAME', 'yy6bxt44hedoshog'),
-            'password' => env('DB_PASSWORD', 'oxnm36jt00mt7cbu'),
+            'database' => env('DB_DATABASE', 'horarios'), //dw23psak8dmu5svu
+            'username' => env('DB_USERNAME', 'root'), //yy6bxt44hedoshog
+            'password' => env('DB_PASSWORD', ''), //oxnm36jt00mt7cbu
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

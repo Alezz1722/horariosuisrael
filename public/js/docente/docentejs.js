@@ -52,6 +52,7 @@ $(document).ready(function(){
             dataType: 'JSON',
             data: { fechaInicio : firstDate , fechaFin : lastDate },
             success: function(data) {
+                console.log(data);
                 informacion = data['success'];
                 estableceEstructura(data);
             }
@@ -78,49 +79,49 @@ $(document).ready(function(){
         $.each( elementos, function( fecha, contenido ) {
             switch(contador){
                 case 0:
-                    ths = ths + '<th style="width: 14.28%"><center>Lunes<br>'+fecha+'</center></th>';
+                    ths = ths + '<th><center>Lunes<br>'+fecha+'</center></th>';
                     f.push(fecha);
                     if(numeroObjetosMayor<contenido.length){
                         numeroObjetosMayor=contenido.length;
                     }
                     break;
                 case 1:
-                    ths = ths + '<th style="width: 14.28%"><center>Martes<br>'+fecha+'</center></th>';
+                    ths = ths + '<th><center>Martes<br>'+fecha+'</center></th>';
                     f.push(fecha);
                     if(numeroObjetosMayor<contenido.length){
                         numeroObjetosMayor=contenido.length;
                     }
                     break;
                 case 2:
-                    ths = ths + '<th style="width: 14.28%"><center>Miercoles<br>'+fecha+'</center></th>';
+                    ths = ths + '<th><center>Miercoles<br>'+fecha+'</center></th>';
                     f.push(fecha);
                     if(numeroObjetosMayor<contenido.length){
                         numeroObjetosMayor=contenido.length;
                     }
                     break;
                 case 3:
-                    ths = ths + '<th style="width: 14.28%"><center>Jueves<br>'+fecha+'</center></th>';
+                    ths = ths + '<th><center>Jueves<br>'+fecha+'</center></th>';
                     f.push(fecha);
                     if(numeroObjetosMayor<contenido.length){
                         numeroObjetosMayor=contenido.length;
                     }
                     break;
                 case 4:
-                    ths = ths + '<th style="width: 14.28%"><center>Viernes<br>'+fecha+'</center></th>';
+                    ths = ths + '<th><center>Viernes<br>'+fecha+'</center></th>';
                     f.push(fecha);
                     if(numeroObjetosMayor<contenido.length){
                         numeroObjetosMayor=contenido.length;
                     }
                     break;
                 case 5:
-                    ths = ths + '<th style="width: 14.28%"><center>Sábado<br>'+fecha+'</center></th>';
+                    ths = ths + '<th><center>Sábado<br>'+fecha+'</center></th>';
                     f.push(fecha);
                     if(numeroObjetosMayor<contenido.length){
                         numeroObjetosMayor=contenido.length;
                     }
                     break;
                 case 6:
-                    ths = ths + '<th style="width: 14.28%"><center>Domingo<br>'+fecha+'</center></th>';
+                    ths = ths + '<th><center>Domingo<br>'+fecha+'</center></th>';
                     f.push(fecha);
                     if(numeroObjetosMayor<contenido.length){
                         numeroObjetosMayor=contenido.length;
@@ -154,7 +155,7 @@ $(document).ready(function(){
 
             for(var i=0;i<nroObjetos;i++){
                 var tr  = '<tr>';
-                tr = tr + '<td id="trjActividad" class="'+f[0]+' '+i+'" style="width: 14.28%">';
+                tr = tr + '<td id="trjActividad" class="'+f[0]+' '+i+' col-md-2">';
 
                 if(data['success'][f[0]][i] != undefined){
                     //Para actividades del dia Lunes
@@ -162,7 +163,7 @@ $(document).ready(function(){
                 }
 
                 tr=  tr +'</td>';
-                tr = tr + '<td id="trjActividad" class="'+f[1]+' '+i+'" style="width: 14.28%">';
+                tr = tr + '<td id="trjActividad" class="'+f[1]+' '+i+' col-md-2">';
 
                 if(data['success'][f[1]][i] != undefined){
                     //Para actividades del dia Martes
@@ -170,7 +171,7 @@ $(document).ready(function(){
                 }
 
                 tr=  tr +'</td>';
-                tr = tr + '<td id="trjActividad" class="'+f[2]+' '+i+'" style="width: 14.28%">';
+                tr = tr + '<td id="trjActividad" class="'+f[2]+' '+i+' col-md-2">';
 
                 if(data['success'][f[2]][i] != undefined){
                     //Para actividades del dia Miercoles
@@ -178,7 +179,7 @@ $(document).ready(function(){
                 }
 
                 tr = tr +'</td>';
-                tr = tr + '<td id="trjActividad" class="'+f[3]+' '+i+'" style="width: 14.28%">';
+                tr = tr + '<td id="trjActividad" class="'+f[3]+' '+i+' col-md-2">';
 
 
                 if(data['success'][f[3]][i] != undefined){
@@ -187,7 +188,7 @@ $(document).ready(function(){
                 }
 
                 tr = tr +'</td>';
-                tr = tr + '<td id="trjActividad" class="'+f[4]+' '+i+'" style="width: 14.28%">';
+                tr = tr + '<td id="trjActividad" class="'+f[4]+' '+i+' col-md-2">';
 
                 if(data['success'][f[4]][i] != undefined){
                     //Para actividades del dia Viernes
@@ -195,7 +196,7 @@ $(document).ready(function(){
                 }
 
                 tr = tr +'</td>';
-                tr = tr + '<td id="trjActividad" class="'+f[5]+' '+i+'" style="width: 14.28%">';
+                tr = tr + '<td id="trjActividad" class="'+f[5]+' '+i+' col-md-1">';
 
                 if(data['success'][f[5]][i] != undefined){
                     //Para actividades del dia Sabado
@@ -203,7 +204,7 @@ $(document).ready(function(){
                 }
 
                 tr = tr +'</td>';
-                tr = tr + '<td id="trjActividad" class="'+f[6]+' '+i+'" style="width: 14.28%">';
+                tr = tr + '<td id="trjActividad" class="'+f[6]+' '+i+' col-md-1">';
 
                 if(data['success'][f[6]][i] != undefined){
                     //Para actividades del dia Domingo
@@ -224,9 +225,9 @@ $(document).ready(function(){
         html = html + '<div class="card" style="cursor: pointer;" data-toggle="modal" data-target="#myModal">';
         //Para establecer las horas
         if(data.estadoListadoFecha == 'APLAZADA' && data.fechaAplazadaListadoFecha == fAsignada){
-            html = html + '<h6 class="card-header"><center>De '+data.horaInicioAplazadaListadoFecha.slice(0,5)+' a '+data.horaFinAplazadaListadoFecha.slice(0,5)+'</h6></center>';
+            html = html + '<h6 class="card-header">De '+data.horaInicioAplazadaListadoFecha.slice(0,5)+' a '+data.horaFinAplazadaListadoFecha.slice(0,5)+'</h6>';
         }else{
-            html = html + '<h6 class="card-header"><center>De '+data.horaInicioListadoFecha.slice(0,5)+' a '+data.horaFinListadoFecha.slice(0,5)+'</h6></center>';
+            html = html + '<h6 class="card-header">De '+data.horaInicioListadoFecha.slice(0,5)+' a '+data.horaFinListadoFecha.slice(0,5)+'</h6>';
         }
         //Para establecer el color de las tarjetas
         if(data.estadoListadoFecha == 'ACTIVA'){
@@ -244,7 +245,7 @@ $(document).ready(function(){
         html = html + '<h6 class="card-title" style="text-align: center;">'+data.idFecha.idActividad.nombreActividad+'</h6>';
         html = html + '</div>';
         html = html + '<div class="card-footer">';
-        html = html + '<h5 style="text-align: left;">'+data.idFecha.idActividad.idLugar.aulaLugar+'</h5>';
+        html = html + '<h5 style="text-align: end;">'+data.idFecha.idActividad.idLugar.aulaLugar+'</h5>';
         html = html + '<p style="text-align: end;">'+data.idFecha.idActividad.idLugar.nombreLugar+'</p>';
         html = html + '</div>';
         html = html + '</div>';

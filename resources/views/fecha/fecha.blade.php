@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <div style="display: none">{{ $cont =0 }}</div>
                     @if (count($fechas) > 0)
-                        <table class="table">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                 <th scope="col">#</th>

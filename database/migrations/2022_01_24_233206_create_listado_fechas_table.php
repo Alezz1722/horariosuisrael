@@ -20,6 +20,8 @@ class CreateListadoFechasTable extends Migration
             $table->time('horaFinListadoFecha');
             $table->unsignedBigInteger('idFecha');
             $table->foreign('idFecha')->references('idFecha')->on('fechas');
+            $table->unsignedBigInteger('idUsuario');
+            $table->foreign('idUsuario')->references('idUsuario')->on('usuarios');
             $table->string('estadoListadoFecha');
             $table->string('observacionListadoFecha');
             $table->date('fechaAplazadaListadoFecha')->nullable();

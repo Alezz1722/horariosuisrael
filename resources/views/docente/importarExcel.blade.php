@@ -3,10 +3,11 @@
 @section('contenidoPrincipal')
 
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-5">
         <div class="col-md-12">
-            <center><h5>Importar Actividades a través de un documento Excel</h5></center>
+            <center><h5 class="mt-4" style="color: #F5F5F5; font-weight: 700;">Importar Actividades a través de un documento Excel</h5></center>
             <br>
+            <p class="alert alert-info">* Considerar que los horarios a registrar se registrarán en horarios de una vez a la semana por todo el periodo establecido.</p>
         </div>
         <div class="col-md-9">
             <h6>Seleccione un archivo excel para importar :</h6>
@@ -42,8 +43,8 @@
             <button class="btn btn-dark btn-block" id="submitFormPeriodo"><i class="bi bi-file-earmark-excel-fill"></i> Leer Excel</button>
         </div>
         <div class="col-md-12 conjuntoExcel" hidden>
-            <table class="table tablaExcel">
-                <thead>
+            <table class="table tablaExcel table-bordered">
+                <thead class="thead-dark">
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">DIA</th>

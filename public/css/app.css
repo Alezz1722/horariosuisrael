@@ -1,5 +1,26 @@
+
 body {
+    background-color: #819FF7;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.432)), to(#ebf781)) fixed;
     padding-top: 70px;
+    position: relative;
+    z-index: 1;
+}
+.navbar{
+
+    z-index: 1000;
+}
+
+.modal{
+    z-index: 1200;
+}
+
+table{
+    background: #F1F1FF !important;
+}
+
+#dashboardDocente{
+    background-color: #f2fbfb !important;
 }
 
 .swal-button--confirm{
@@ -12,4 +33,24 @@ body {
 
 #importaExcel .modal-dialog {
     max-width: 100%;
+}
+
+
+label.error {
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: 5px;
+    text-align: end;
+}
+
+input.error {
+    border: 1px solid red;
+    font-weight: 300;
+    color: red;
+}
+select.error {
+    border: 1px solid red;
+    font-weight: 300;
+    color: red;
 }

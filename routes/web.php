@@ -34,6 +34,9 @@ Route::get('/docente/importarExcel',[DocenteControlador::class, 'importarExcel']
 
 Route::post('/docente/importarExcel/crear',[DocenteControlador::class, 'importarExcelActividad'])->name('importarExcelActividad');
 
+Route::get('/docente/nuevo', [DocenteControlador::class,'registraDocente'])->name('registraDocente');
+
+Route::post('/docente/nuevo', [DocenteControlador::class,'nuevoUsuario'])->name('nuevoUsuario');
 
 
 //Login
@@ -43,6 +46,8 @@ Route::get('/cerrarsesion',[LoginControlador::class, 'cerrarSesion'])->name('cer
 Route::get('/login',[LoginControlador::class, 'login'])->name('login');
 
 Route::post('/login',[LoginControlador::class, 'acceso'])->name('login');
+
+
 
 
 //Periodo
