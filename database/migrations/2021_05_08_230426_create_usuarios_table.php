@@ -19,6 +19,8 @@ class CreateUsuariosTable extends Migration
             $table->string('apellidoUsuario');
             $table->string('correoUsuario')->unique();
             $table->string('contrasenaUsuario');
+            $table->boolean('estadoUsuario');
+            $table->string('codigoUsuario');
             $table->timestamps();
         });
     }

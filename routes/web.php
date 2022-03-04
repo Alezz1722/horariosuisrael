@@ -38,6 +38,8 @@ Route::get('/docente/nuevo', [DocenteControlador::class,'registraDocente'])->nam
 
 Route::post('/docente/nuevo', [DocenteControlador::class,'nuevoUsuario'])->name('nuevoUsuario');
 
+Route::get('/docente/{codigo}', [DocenteControlador::class,'confirmaUsuario',])->name('confirmaUsuario');
+
 
 //Login
 

@@ -35,19 +35,14 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     @if (session('usuarioConectado'))
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="bi bi-gear-fill"></i> Gestión
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('periodo') }}"><i class="bi bi-gear"></i>
-                                    Periodos</a>
-                                <a class="dropdown-item" href="{{ route('lugar') }}"><i class="bi bi-gear"></i>
-                                    Lugares</a>
-                                <a class="dropdown-item" href="{{ route('actividad') }}"><i
-                                        class="bi bi-gear"></i> Actividades</a>
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('periodo') }}"><i class="bi bi-activity"></i> Periodos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('lugar') }}"><i class="bi bi-pin-angle"></i> Lugares</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('actividad') }}"><i class="bi bi-person-video3"></i> Actividades</a>
                         </li>
                     @endif
                 </ul>
@@ -73,10 +68,11 @@
                                 {{ session('usuarioConectado')['apellidoUsuario'] }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Editar mi perfil</a>
+                                <a class="dropdown-item" href="#"><i class="bi bi-pencil-square"></i> Editar mi perfil</a>
+                                <a class="dropdown-item" href="#"><i class="bi bi-key"></i> Cambiar contraseña</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" data-toggle="modal" data-target="#cerrarSesionModal"
-                                    href="#">Cerrar Sesión</a>
+                                    href="#"><i class="bi bi-box-arrow-left"></i> Cerrar Sesión</a>
                             </div>
                         </li>
                     @endif

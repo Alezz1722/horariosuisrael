@@ -12,7 +12,9 @@ class Usuario extends Model
         'nombreUsuario',
         'apellidoUsuario',
         'correoUsuario',
-        'contrasenaUsuario'
+        'contrasenaUsuario',
+        'estadoUsuario',
+        'codigoUsuario',
        ];
     use HasFactory;
 }
