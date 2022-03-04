@@ -1,40 +1,53 @@
-
 body {
-    background-color: #819FF7;
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.432)), to(#ebf781)) fixed;
+    background-color: #819ff7;
+    background: -webkit-gradient(
+            linear,
+            left top,
+            left bottom,
+            from(rgba(0, 0, 0, 0.432)),
+            to(#ebf781)
+        )
+        fixed;
     padding-top: 70px;
     position: relative;
     z-index: 1;
 }
-.navbar{
-
+.navbar {
     z-index: 1000;
 }
 
-.modal{
+.modal {
     z-index: 1200;
 }
 
-table{
-    background: #F1F1FF !important;
+table {
+    background: #f1f1ff !important;
 }
 
-#dashboardDocente{
-    background-color: #f2fbfb !important;
+#dashboardDocente {
+    background-color: rgba(211, 212, 211, 0.61) !important;
 }
 
-.swal-button--confirm{
+.btn-warning {
+    background-color: rgba(242, 141, 21, 0.42) !important;
+}
+
+.btn-danger {
+    background-color: rgba(200, 35, 51, 0.57) !important;
+    border: 0 !important;
+}
+
+.swal-button--confirm {
     background-color: #007bff;
-  }
+}
 
-  .swal-modal .swal-text {
+.swal-modal .swal-text {
     text-align: center;
 }
 
 #importaExcel .modal-dialog {
     max-width: 100%;
 }
-
 
 label.error {
     color: red;
