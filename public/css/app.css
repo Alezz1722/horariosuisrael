@@ -38,7 +38,12 @@ table {
 }
 
 .swal-button--confirm {
-    background-color: #007bff;
+    background-color: #ffc107;
+    color: #555;
+}
+
+.swal-button:not([disabled]):hover {
+    background-color: #e0a800;
 }
 
 .swal-modal .swal-text {
