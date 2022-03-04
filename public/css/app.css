@@ -72,3 +72,11 @@ select.error {
     font-weight: 300;
     color: red;
 }
+
+.caja {
+    background-color: #f5f5f5;
+    -webkit-box-shadow: 0 2px 4px 0 rgb(80 83 90 / 30%);
+    box-shadow: 0 2px 4px 0 rgb(80 83 90 / 30%);
+    border-radius: 4px;
+    border: 1px solid #e9eae8;
+}
