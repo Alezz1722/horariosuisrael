@@ -104,8 +104,8 @@
                     ¿ Esta seguro de cerrar su sesión ?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No cerrar</button>
-                    <a role="button" class="btn btn-danger" href="{{ route('cerrarSesion') }}">Cerrar sesión</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="bi bi-x-circle"></i> Cancelar</button>
+                    <a role="button" class="btn btn-danger" href="{{ route('cerrarSesion') }}"><i class="bi bi-box-arrow-left"></i> Cerrar sesión</a>
                 </div>
             </div>
         </div>

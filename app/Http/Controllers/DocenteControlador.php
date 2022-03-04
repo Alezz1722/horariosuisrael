@@ -61,7 +61,7 @@ class DocenteControlador extends Controller
             ];
 
             Mail::send('emails.nuevoDocente', $data, function ($message) use ($correo) {
-                $message->from('emprendedor.uisrael@gmail.com', 'SISTEMA DOCENCIA');
+                $message->from('docenciasystem@gmail.com', 'SISTEMA DOCENCIA');
                 $message->to($correo)->subject('Confirmación de registro de cuenta');
             });
 
@@ -73,6 +73,67 @@ class DocenteControlador extends Controller
 
         return back()->with('error', 'Error de servidor');
 
+    }
+
+    public function recuperaContrasena(Request $request)
+    {
+
+        $usuario = Usuario::where('correoUsuario', $request->correoRecuperacion)->first();
+
+        if ($usuario) {
+
+            $codigoGenerado = Str::random(10);
+            $correo = $usuario->correoUsuario;
+
+            $usuario->codigoUsuario = $codigoGenerado;
+            $usuario->save();
+
+            $data = [
+                'link' => 'http://127.0.0.1:8000/password/' . $codigoGenerado,
+                'nombre' => $usuario->nombreUsuario . ' ' . $usuario->apellidoUsuario,
+                'correo' => $correo,
+            ];
+
+            Mail::send('emails.notificacion', $data, function ($message) use ($correo) {
+                $message->from('docenciasystem@gmail.com', 'SISTEMA DOCENCIA');
+                $message->to($correo)->subject('Recuperación de contraseña');
+            });
+
+            //$request->session()->put('usuarioConectado',$emprendedor);
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['error' => true]);
+        }
+    }
+
+
+    public function restauraContrasena(Request $request, $codigo)
+    {
+
+        $usuario = Usuario::where('codigoUsuario', $codigo)->first();
+
+        if ($usuario) {
+            return view('docente.restaura', compact('usuario'));
+        } else {
+            return redirect()->route('menu');
+        }
+    }
+
+    public function cambiaNuevaContrasena(Request $request, $codigo)
+    {
+
+        $usuario = Usuario::where('codigoUsuario', $codigo)->first();
+
+        if ($usuario) {
+
+            $usuario->codigoUsuario = "";
+            $usuario->contrasenaUsuario = md5($request->contrasenaUsuario);
+            $usuario->estadoUsuario = true;
+            $usuario->save();
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['error' => true]);
+        }
     }
 
 

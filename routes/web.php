@@ -40,6 +40,13 @@ Route::post('/docente/nuevo', [DocenteControlador::class,'nuevoUsuario'])->name(
 
 Route::get('/docente/{codigo}', [DocenteControlador::class,'confirmaUsuario',])->name('confirmaUsuario');
 
+//Recuperacion
+
+Route::post('/recuperaContrasena', [DocenteControlador::class,'recuperaContrasena',])->name('recuperaContrasena');
+
+Route::get('/password/{codigo}', [DocenteControlador::class,'restauraContrasena',])->name('restauraContrasena');
+
+Route::post('/password/{codigo}', [DocenteControlador::class,'cambiaNuevaContrasena',])->name('cambiaNuevaContrasena');
 
 //Login
 

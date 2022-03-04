@@ -12,9 +12,8 @@
                             {{ session('usuarioConectado')['nombreUsuario'] }}
                             {{ session('usuarioConectado')['apellidoUsuario'] }} </span>
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="{{ route('importarExcel') }}" type="button" class="btn btn-success"><i
-                                    class="bi bi-file-earmark-excel-fill"></i> Importar</a>
-                            <a href="{{ route('crearActividad') }}" type="button" class="btn btn-primary"><i
+                            <a href="{{ route('importarExcel') }}" type="button" class="btn btn-success"><i class="bi bi-filetype-xls"></i> Importar</a>
+                            <a href="{{ route('crearActividad') }}" type="button" class="btn btn-warning"><i
                                     class="fas fa-plus-circle"></i> Nueva</a>
                         </div>
                     </div>

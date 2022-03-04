@@ -11,7 +11,7 @@
                         <span><i class="fas fa-clipboard-list"></i> Lista de lugares para
                             {{ session('usuarioConectado')['nombreUsuario'] }}
                             {{ session('usuarioConectado')['apellidoUsuario'] }} </span>
-                        <a href="{{ route('crearLugar') }}" class="btn btn-primary btn-sm"><i
+                        <a href="{{ route('crearLugar') }}" class="btn btn-warning btn-sm"><i
                                 class="fas fa-plus-circle"></i> Nuevo Lugar</a>
                     </div>
                     <div class="card-body">

@@ -48,4 +48,7 @@ class LoginControlador extends Controller
             return back()->with('mensajeError', $e->getMessage());
         }
     }
+
+
+
 }
