@@ -65,14 +65,14 @@
                                             <td>
                                                 <div class="btn-group">
                                                     <a href="{{ route('editarActividad', $actividad->idActividad) }}"
-                                                        class="btn btn-warning">Editar</a>
+                                                        class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                                     <a class="btn btn-danger borrarActividad">
                                                         <p class="idActividad" hidden>{{ $actividad->idActividad }}
                                                         </p>
                                                         <p class="nombreActividad" hidden>
                                                             {{ $actividad->nombreActividad }}
                                                         </p>
-                                                        Borrar
+                                                        <i class="bi bi-trash"></i>
                                                     </a>
                                                 </div>
                                             </td>

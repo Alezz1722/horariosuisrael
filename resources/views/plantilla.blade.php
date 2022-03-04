@@ -23,7 +23,8 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm fixed-top">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <i class="bi bi-table"></i> Docencia
+                <img src="/img/logo.svg" width="25px" height="25px" />
+                <span>Horario</span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -36,13 +37,16 @@
                 <ul class="navbar-nav mr-auto">
                     @if (session('usuarioConectado'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('periodo') }}"><i class="bi bi-activity"></i> Periodos</a>
+                            <a class="nav-link" href="{{ route('periodo') }}"><i class="bi bi-activity"></i>
+                                Periodos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('lugar') }}"><i class="bi bi-pin-angle"></i> Lugares</a>
+                            <a class="nav-link" href="{{ route('lugar') }}"><i class="bi bi-pin-angle"></i>
+                                Lugares</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('actividad') }}"><i class="bi bi-person-video3"></i> Actividades</a>
+                            <a class="nav-link" href="{{ route('actividad') }}"><i
+                                    class="bi bi-person-video3"></i> Actividades</a>
                         </li>
                     @endif
                 </ul>
@@ -51,7 +55,8 @@
                 <ul class="navbar-nav ml-auto">
                     @if (!session('usuarioConectado'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('registraDocente') }}"><i class="bi bi-person-plus"></i> Registrarse</a>
+                            <a class="nav-link" href="{{ route('registraDocente') }}"><i
+                                    class="bi bi-person-plus"></i> Registrarse</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}"><i
@@ -68,7 +73,8 @@
                                 {{ session('usuarioConectado')['apellidoUsuario'] }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#"><i class="bi bi-pencil-square"></i> Editar mi perfil</a>
+                                <a class="dropdown-item" href="#"><i class="bi bi-pencil-square"></i> Editar mi
+                                    perfil</a>
                                 <a class="dropdown-item" href="#"><i class="bi bi-key"></i> Cambiar contraseña</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" data-toggle="modal" data-target="#cerrarSesionModal"

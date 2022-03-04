@@ -28,13 +28,13 @@ table {
     background-color: rgba(211, 212, 211, 0.61) !important;
 }
 
-.bg-warning {
-    background-color: rgba(242, 141, 21, 0.42) !important;
+.btn-danger {
+    background-color: rgba(200, 35, 51, 0.83) !important;
+    border: 0 !important;
 }
 
-.btn-danger {
-    background-color: rgba(200, 35, 51, 0.57) !important;
-    border: 0 !important;
+.btn-danger:hover {
+    background-color: #c82333 !important;
 }
 
 .swal-button--confirm {
