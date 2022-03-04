@@ -14,7 +14,7 @@
                         <input type="text" class="form-control" id="idActividad" name="idActividad"
                             value="{{ $actividad->idActividad }}" hidden>
                         <a href="{{ route('crearRecurso', ['id' => $actividad->idActividad]) }}"
-                            class="btn btn-primary btn-sm"><i class="fas fa-plus-circle"></i> Nuevo Recurso</a>
+                            class="btn btn-warning btn-sm"><i class="fas fa-plus-circle"></i> Nuevo Recurso</a>
                     </div>
                     <div class="card-body">
                         <div style="display: none">{{ $cont = 0 }}</div>
