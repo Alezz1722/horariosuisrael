@@ -49,7 +49,9 @@ class DocenteControlador extends Controller
                 'nombreUsuario' => $request->nombreUsuario,
                 'apellidoUsuario' => $request->apellidoUsuario,
                 'correoUsuario' => $request->correoUsuario,
-                'contrasenaUsuario' => md5($request->contrasenaUsuario)
+                'contrasenaUsuario' => md5($request->contrasenaUsuario),
+                'estadoUsuario' => 0,
+                'codigoUsuario' => $codigoGenerado,
             ]);
 
             $correo = $request->correoUsuario;
@@ -64,13 +66,31 @@ class DocenteControlador extends Controller
             });
 
 
-            return back()->with('success', 'Hemos recibido tu petición de creación, por favor revisa tu correo electrónico para culminar la creación del emprendedor.');
+            return back()->with('success', 'Hemos recibido tu petición de creación, por favor revisa tu correo electrónico para culminar la creación del docente.');
         }else{
             return back()->with('error', 'El docente ya se encuentra registrado');
         }
 
         return back()->with('error', 'Error de servidor');
 
+    }
+
+
+    public function confirmaUsuario(Request $request,$codigo){
+
+        $usuario = Usuario::where('codigoUsuario',$codigo)->first();
+
+        if($usuario){
+
+            $usuario->codigoUsuario = "";
+            $usuario->estadoUsuario = true;
+            $usuario->save();
+            $request->session()->put('usuarioConectado',$usuario);
+            return view('docente.bienvenida',compact('usuario'));
+
+        }else{
+            return redirect()->route('menu');
+        }
     }
 
     public function listarHorariosSemanal(Request $request)
