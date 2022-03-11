@@ -15,7 +15,7 @@ class PeriodoControlador extends Controller
             $periodos = Periodo::where('idUsuario', '=', $idusuario)->get();
             return view('periodo.periodo',compact('periodos'));
         }else{
-            abort(404);
+            return redirect()->route('menu');
         }
     }
 
@@ -23,7 +23,7 @@ class PeriodoControlador extends Controller
         if (session()->has('usuarioConectado')){
             return view('periodo.crearPeriodo');
         }else{
-            abort(404);
+            return redirect()->route('menu');
         }
     }
 

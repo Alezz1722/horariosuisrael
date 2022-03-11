@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[DocenteControlador::class, 'menu'])->name('menu');
 
-Route::get('/menu',[DocenteControlador::class, 'menu'])->name('menu');
+//Route::get('/menu',[DocenteControlador::class, 'menu'])->name('menu');
 
 Route::get('/docente/listarSemana',[DocenteControlador::class, 'listarHorariosSemanal'])->name('listarHorariosSemanal');
 
@@ -47,6 +47,14 @@ Route::post('/recuperaContrasena', [DocenteControlador::class,'recuperaContrasen
 Route::get('/password/{codigo}', [DocenteControlador::class,'restauraContrasena',])->name('restauraContrasena');
 
 Route::post('/password/{codigo}', [DocenteControlador::class,'cambiaNuevaContrasena',])->name('cambiaNuevaContrasena');
+
+Route::get('/cambiaContrasena', [DocenteControlador::class,'passwordDocente',])->name('passwordDocente');
+
+Route::post('/cambiaContrasena', [DocenteControlador::class,'editaPasswordDocente',])->name('editaPasswordDocente');
+
+Route::get('/docente', [DocenteControlador::class,'docente',])->name('docente');
+
+Route::post('/docente', [DocenteControlador::class,'editaDocente',])->name('editaDocente');
 
 //Login
 

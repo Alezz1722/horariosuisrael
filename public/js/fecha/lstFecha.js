@@ -21,13 +21,14 @@ $(document).ready(function(){
             dangerMode: true,
           }).then(function(isConfirm) {
             if (isConfirm) {
+                $('.loading').attr("hidden",false);
                 $.ajax({
                     url: '/fecha/eliminar/'+idFecha,
                     type:'DELETE',
                     dataType: 'JSON',
                     //data: data,
                     success: function(data) {
-                        console.log(data);
+                        $('.loading').attr("hidden",true);
                         if(data.success){
                             swal({
                                 title: "Horario eliminado",

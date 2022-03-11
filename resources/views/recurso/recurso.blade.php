@@ -5,7 +5,7 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <span><i class="fas fa-clipboard-list"></i> Recursos establecidos para la actividad
@@ -25,6 +25,7 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Url</th>
+                                        <th scope="col">Acción</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -39,7 +40,7 @@
                                                 <div class="btn-group">
                                                     <a href="{{ route('editarRecurso', $recurso->idRecurso) }}"
                                                         class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-                                                    <a class="btn btn-danger borrarRecurso">
+                                                    <a class="btn btn-danger borrarRecurso" style="cursor: pointer;">
                                                         <p class="idRecurso" hidden>{{ $recurso->idRecurso }}</p>
                                                         <p class="nombreRecurso" hidden>{{ $recurso->nombreRecurso }}
                                                         </p>

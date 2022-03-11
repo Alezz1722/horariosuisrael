@@ -40,7 +40,7 @@
                                                 <div class="btn-group">
                                                     <a href="{{ route('editarLugar', $lugar->idLugar) }}"
                                                         class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-                                                    <a class="btn btn-danger borrarLugar">
+                                                    <a class="btn btn-danger borrarLugar" style="cursor: pointer;">
                                                         <p class="idLugar" hidden>{{ $lugar->idLugar }}</p>
                                                         <p class="nombreLugar" hidden>{{ $lugar->nombreLugar }}</p>
                                                         <i class="bi bi-trash"></i>

@@ -22,7 +22,6 @@ class DocenteControlador extends Controller
 {
     public function menu(Request $request)
     {
-
         if (session()->has('usuarioConectado')) {
             return view('docente.menuprincipal');
         } else {
@@ -40,9 +39,9 @@ class DocenteControlador extends Controller
 
     public function nuevoUsuario(Request $request)
     {
-        $usuario = Usuario::where('correoUsuario',$request->correoUsuario)->first();
+        $usuario = Usuario::where('correoUsuario', $request->correoUsuario)->first();
 
-        if(!$usuario){
+        if (!$usuario) {
 
             $codigoGenerado = Str::random(10);
             Usuario::create([
@@ -55,8 +54,9 @@ class DocenteControlador extends Controller
             ]);
 
             $correo = $request->correoUsuario;
-            $data = [   'link' => 'http://127.0.0.1:8000/docente/'.$codigoGenerado,
-                'nombre' => $request->nombreUsuario.' '.$request->apellidoUsuario,
+            $data = [
+                'link' => 'http://127.0.0.1:8000/docente/' . $codigoGenerado,
+                'nombre' => $request->nombreUsuario . ' ' . $request->apellidoUsuario,
                 'correo' => $correo,
             ];
 
@@ -67,12 +67,11 @@ class DocenteControlador extends Controller
 
 
             return back()->with('success', 'Hemos recibido tu petición de creación, por favor revisa tu correo electrónico para culminar la creación del docente.');
-        }else{
+        } else {
             return back()->with('error', 'El docente ya se encuentra registrado');
         }
 
         return back()->with('error', 'Error de servidor');
-
     }
 
     public function recuperaContrasena(Request $request)
@@ -130,6 +129,7 @@ class DocenteControlador extends Controller
             $usuario->contrasenaUsuario = md5($request->contrasenaUsuario);
             $usuario->estadoUsuario = true;
             $usuario->save();
+            session()->pull('usuarioConectado');
             return response()->json(['success' => true]);
         } else {
             return response()->json(['error' => true]);
@@ -137,22 +137,93 @@ class DocenteControlador extends Controller
     }
 
 
-    public function confirmaUsuario(Request $request,$codigo){
+    public function confirmaUsuario(Request $request, $codigo)
+    {
 
-        $usuario = Usuario::where('codigoUsuario',$codigo)->first();
+        $usuario = Usuario::where('codigoUsuario', $codigo)->first();
 
-        if($usuario){
+        if ($usuario) {
 
             $usuario->codigoUsuario = "";
             $usuario->estadoUsuario = true;
             $usuario->save();
-            $request->session()->put('usuarioConectado',$usuario);
-            return view('docente.bienvenida',compact('usuario'));
-
-        }else{
+            $request->session()->put('usuarioConectado', $usuario);
+            return view('docente.bienvenida', compact('usuario'));
+        } else {
             return redirect()->route('menu');
         }
     }
+
+    public function passwordDocente(Request $request)
+    {
+
+        if (session()->has('usuarioConectado')) {
+            return view('docente.cambiaPassword');
+        } else {
+            return redirect()->route('menu');
+        }
+    }
+
+    public function editaPasswordDocente(Request $request)
+    {
+
+        $usuario = Usuario::where('idUsuario', session('usuarioConectado')['idUsuario'])->first();
+
+        if ($usuario) {
+
+            if ($usuario->contrasenaUsuario == md5($request->contrasenaActualDocente)) {
+
+                if ($usuario->contrasenaUsuario != md5($request->nuevaContrasenaDocente)) {
+
+                    $usuario->contrasenaUsuario = md5($request->nuevaContrasenaDocente);
+                    $usuario->save();
+
+                    $request->session()->put('usuarioConectado', $usuario);
+
+                    return back()->with('success', 'La contraseña fue actualizada correctamente.');
+                } else {
+                    return back()->with('error', 'La nueva contraseña dede ser diferente a la contraseña actual.');
+                }
+            } else {
+                return back()->with('error', 'La contraseña actual no es la correcta.');
+            }
+        } else {
+            return back()->with('error', 'Error al actualizar la información');
+        }
+    }
+
+    public function docente(Request $request)
+    {
+        if (session()->has('usuarioConectado')) {
+            $idusuario = session('usuarioConectado')['idUsuario'];
+            $usuario = Usuario::where('idUsuario', '=', $idusuario)->first();
+            return view('docente.editaDocente', compact('usuario'));
+        } else {
+            return redirect()->route('menu');
+        }
+    }
+
+    public function editaDocente(Request $request)
+    {
+
+        $usuario = Usuario::where('idUsuario', session('usuarioConectado')['idUsuario'])->first();
+
+        if ($usuario) {
+            $usuario->nombreUsuario = $request->nombreUsuario;
+            $usuario->apellidoUsuario = $request->apellidoUsuario;
+            $usuario->correoUsuario = $request->correoUsuario;
+
+            $usuario->save();
+
+            $request->session()->put('usuarioConectado', $usuario);
+
+            return back()->with('success', 'Tu información fue actualizada correctamente.');
+        } else {
+            return back()->with('error', 'Error al actualizar la información');
+        }
+    }
+
+    //Para obtener la lista de horarios tanto logueado como no logueado
 
     public function listarHorariosSemanal(Request $request)
     {
@@ -229,7 +300,7 @@ class DocenteControlador extends Controller
             $periodos = Periodo::where('idUsuario', '=', $idusuario)->get();
             return view('docente.importarExcel', compact('periodos'));
         } else {
-            abort(404);
+            return redirect()->route('menu');
         }
     }
 
@@ -352,7 +423,7 @@ class DocenteControlador extends Controller
                 return response()->json(['error' => $e->getMessage()]);
             }
         } else {
-            abort(404);
+            return redirect()->route('menu');
         }
     }
 }

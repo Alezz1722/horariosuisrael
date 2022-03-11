@@ -15,7 +15,7 @@ class LugarControlador extends Controller
             $lugares = Lugar::where('idUsuario', '=', $idusuario)->get();
             return view('lugar.lugar',compact('lugares'));
         }else{
-            abort(404);
+            return redirect()->route('menu');
         }
     }
 
@@ -23,7 +23,7 @@ class LugarControlador extends Controller
         if (session()->has('usuarioConectado')){
             return view('lugar.crearLugar');
         }else{
-            abort(404);
+            return redirect()->route('menu');
         }
     }
 

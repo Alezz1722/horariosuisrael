@@ -42,7 +42,7 @@
                                                         class="btn btn-warning">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </a>
-                                                    <a class="btn btn-danger borrarPeriodo">
+                                                    <a class="btn btn-danger borrarPeriodo" style="cursor: pointer;">
                                                         <p class="idPeriodo" hidden>{{ $periodo->idPeriodo }}</p>
                                                         <p class="nombrePeriodo" hidden>{{ $periodo->nombrePeriodo }}
                                                         </p>

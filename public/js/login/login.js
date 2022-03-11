@@ -5,7 +5,6 @@ $(document).ready(function(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    console.log("hola");
 
     $("#formRecuperacion").validate({
         rules: {

@@ -65,7 +65,7 @@
                                                 <div class="btn-group">
                                                     <a href="{{ route('editarActividad', $actividad->idActividad) }}"
                                                         class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-                                                    <a class="btn btn-danger borrarActividad">
+                                                    <a class="btn btn-danger borrarActividad" style="cursor: pointer;">
                                                         <p class="idActividad" hidden>{{ $actividad->idActividad }}
                                                         </p>
                                                         <p class="nombreActividad" hidden>

@@ -47,12 +47,14 @@ $(document).ready(function(){
             ],
           }).then(function(isConfirm) {
             if (isConfirm) {
+                $('.loading').attr("hidden",false);
                 $.ajax({
                     url: '/lugar/editar/'+$(".idLugar").text(),
                     type:'PUT',
                     dataType: 'JSON',
                     data: data,
                     success: function(data) {
+                        $('.loading').attr("hidden",true);
                         if(data.success){
                             $('.alert-danger').hide();
                             swal({

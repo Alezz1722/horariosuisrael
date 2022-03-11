@@ -47,13 +47,14 @@ $(document).ready(function(){
             ],
           }).then(function(isConfirm) {
             if (isConfirm) {
+                $('.loading').attr("hidden",false);
                 $.ajax({
                     url: '/recurso/crear',
                     type:'POST',
                     dataType: 'JSON',
                     data: data,
                     success: function(data) {
-
+                        $('.loading').attr("hidden",true);
                         if(data.success){
                             $('.alert-danger').hide();
                             swal({

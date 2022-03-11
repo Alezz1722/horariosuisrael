@@ -73,9 +73,9 @@
                                 {{ session('usuarioConectado')['apellidoUsuario'] }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#"><i class="bi bi-pencil-square"></i> Editar mi
+                                <a class="dropdown-item" href="{{ route('docente') }}"><i class="bi bi-pencil-square"></i> Editar mi
                                     perfil</a>
-                                <a class="dropdown-item" href="#"><i class="bi bi-key"></i> Cambiar contraseña</a>
+                                <a class="dropdown-item" href="{{ route('passwordDocente') }}"><i class="bi bi-key"></i> Cambiar contraseña</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" data-toggle="modal" data-target="#cerrarSesionModal"
                                     href="#"><i class="bi bi-box-arrow-left"></i> Cerrar Sesión</a>
@@ -86,6 +86,7 @@
             </div>
         </div>
     </nav>
+    <div class="loading" hidden>Loading&#8230;</div>
     <div class="container-fluid">
         @yield('contenidoPrincipal')
     </div>
@@ -101,7 +102,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ¿ Esta seguro de cerrar su sesión ?
+                    <center>¿ Esta seguro de cerrar su sesión ?</center>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="bi bi-x-circle"></i> Cancelar</button>

@@ -45,14 +45,12 @@ $(document).ready(function(){
     });
 
     function obtieneInformacion(){
-
         $.ajax({
             url: '/docente/listarSemana',
             type:'GET',
             dataType: 'JSON',
             data: { fechaInicio : firstDate , fechaFin : lastDate },
             success: function(data) {
-                console.log(data);
                 informacion = data['success'];
                 estableceEstructura(data);
             }

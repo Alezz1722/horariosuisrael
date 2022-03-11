@@ -23,7 +23,7 @@ class FechaControlador extends Controller
             $fechas = Fecha::where('idActividad', '=', $request->id)->get();
             return view('fecha.fecha', compact('fechas', 'actividad'));
         } else {
-            abort(404);
+            return redirect()->route('menu');
         }
     }
 
@@ -36,7 +36,7 @@ class FechaControlador extends Controller
             $periodo = Periodo::where('idPeriodo', $actividad->idPeriodo)->first();
             return view('fecha.crearFecha', compact('actividad', 'periodo'));
         } else {
-            abort(404);
+            return redirect()->route('menu');
         }
     }
 
@@ -165,13 +165,12 @@ class FechaControlador extends Controller
             $fecha->idActividad->idPeriodo = $periodo = Periodo::where('idPeriodo', $fecha->idActividad->idPeriodo)->first();
             return view('fecha.editarFecha', compact('fecha'));
         } else {
-            abort(404);
+            return redirect()->route('menu');
         }
     }
 
     public function updateFecha(Request $request, $idFecha)
     {
-
 
         try {
 

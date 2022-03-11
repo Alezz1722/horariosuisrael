@@ -69,7 +69,7 @@
                                                 <div class="btn-group">
                                                     <a href="{{ route('editarFecha', $fecha->idFecha) }}"
                                                         class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-                                                    <a class="btn btn-danger borrarFecha">
+                                                    <a class="btn btn-danger borrarFecha" style="cursor: pointer;">
                                                         <p class="idFecha" hidden>{{ $fecha->idFecha }}</p>
                                                         <i class="bi bi-trash"></i>
                                                     </a>

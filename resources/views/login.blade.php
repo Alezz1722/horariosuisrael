@@ -40,6 +40,9 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">Contraseña</label>
 
                             <div class="col-md-6">
+                                <span id="btnClave" toggle="#password-field"
+                                    class="fa fa-fw fa-eye field-icon toggle-password"
+                                    onclick="javascript: password = document.getElementById('contrasena'); btnClave = document.getElementById('btnClave'); if (password.type == 'password') { password.type = 'text'; btnClave.classList.remove('fa-eye'); btnClave.classList.add('fa-eye-slash'); } else { password.type = 'password'; btnClave.classList.remove('fa-eye-slash'); btnClave.classList.add('fa-eye'); }"></span>
                                 <input id="contrasena" type="password" placeholder="Ingrese la contraseña del docente"
                                     class="form-control @error('contrasena') is-invalid @enderror" name="contrasena"
                                     required autocomplete="current-password">

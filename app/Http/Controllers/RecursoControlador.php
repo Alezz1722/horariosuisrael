@@ -21,7 +21,7 @@ class RecursoControlador extends Controller
             $recursos = Recurso::where('idActividad', '=', $request->id)->get();
             return view('recurso.recurso',compact('recursos','actividad'));
         }else{
-            abort(404);
+            return redirect()->route('menu');
         }
     }
 
@@ -32,7 +32,7 @@ class RecursoControlador extends Controller
             $actividad = Actividad::where('idActividad',$request->id)->first();
             return view('recurso.crearRecurso',compact('actividad'));
         }else{
-            abort(404);
+            return redirect()->route('menu');
         }
     }
 
@@ -90,7 +90,7 @@ class RecursoControlador extends Controller
             $recurso->idActividad->idPeriodo = $periodo = Periodo::where('idPeriodo',$recurso->idActividad->idPeriodo)->first();
             return view('recurso.editarRecurso', compact('recurso'));
         }else{
-            abort(404);
+            return redirect()->route('menu');
         }
     }
 

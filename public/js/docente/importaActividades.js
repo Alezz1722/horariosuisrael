@@ -15,6 +15,7 @@ $(document).ready(function () {
 
         if (($(".idPeriodo").val() != "") && (analizaExcel() == 0)) {
             $(".conjuntoExcel").attr("hidden", true);
+            $('.loading').attr("hidden",false);
             var tr = "";
 
             $.when(
@@ -43,6 +44,7 @@ $(document).ready(function () {
             ).done(function (done) {
                 $('.tablaExcel tbody').html(tr);
                 $(".conjuntoExcel").attr("hidden", false);
+                $('.loading').attr("hidden",true);
             });
 
 
@@ -76,28 +78,38 @@ $(document).ready(function () {
             ],
         }).then(function (isConfirm) {
             if (isConfirm) {
-                console.log({ actividades: _result, idperiodo: $(".idPeriodo").val() })
+                $('.loading').attr("hidden",false);
                 $.ajax({
                     url: '/docente/importarExcel/crear/',
                     type: 'POST',
                     dataType: 'JSON',
                     data: { actividades: _result, idperiodo: $(".idPeriodo").val() },
                     success: function (data) {
-                        console.log(data);
-                        /**
+
+                        $('.loading').attr("hidden",true);
                         if (data.success) {
-                            $('.alert-danger').hide();
                             swal({
-                                title: "Horario editado",
-                                text: "El estado del horario fue asignado exitosamente!",
+                                title: "Actividades Importadas",
+                                text: "Las actividades fueron importadas al sistema con exito !",
                                 icon: "success",
                                 type: "success"
                             }).then(function () {
-                                obtieneInformacion();
+                                //obtieneInformacion();
+                                window.location.href = "/";
                             }
                             );
                         }
-                        */
+
+                        if(data.error){
+                            swal({
+                                title: "Error al importar actividades",
+                                text: data.error,
+                                icon: "error",
+                                type: "error"
+                            });
+                        }
+
+
                     }
                 });
             }

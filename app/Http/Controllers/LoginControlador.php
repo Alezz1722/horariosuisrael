@@ -35,7 +35,7 @@ class LoginControlador extends Controller
 
             if($usuario){//Cuando fue encontrado el usuario
                 $request->session()->put('usuarioConectado',$usuario);
-                return redirect('menu');
+                return redirect()->route('menu');
                 //return back()->with('mensaje', 'El usuario fue encontrado');
             }else{
                 return back()->with('mensajeError', 'El nombre de usuario y/o contraseña no fue el correcto.');

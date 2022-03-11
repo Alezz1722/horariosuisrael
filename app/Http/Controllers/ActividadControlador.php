@@ -12,30 +12,32 @@ use Validator;
 
 class ActividadControlador extends Controller
 {
-    public function actividad(Request $request){
-        if (session()->has('usuarioConectado')){
+    public function actividad(Request $request)
+    {
+        if (session()->has('usuarioConectado')) {
             $idusuario = session('usuarioConectado')['idUsuario'];
             $actividades = Actividad::where('idUsuario', '=', $idusuario)->get();
             foreach ($actividades as $actividad) {
-                $periodo = Periodo::where('idPeriodo',$actividad->idPeriodo)->first();
+                $periodo = Periodo::where('idPeriodo', $actividad->idPeriodo)->first();
                 $actividad->idPeriodo = $periodo;
-                $lugar = Lugar::where('idLugar',$actividad->idLugar)->first();
+                $lugar = Lugar::where('idLugar', $actividad->idLugar)->first();
                 $actividad->idLugar = $lugar;
             }
-            return view('actividad.actividad',compact('actividades'));
-        }else{
-            abort(404);
+            return view('actividad.actividad', compact('actividades'));
+        } else {
+            return redirect()->route('menu');
         }
     }
 
-    public function crearActividad(Request $request){
-        if (session()->has('usuarioConectado')){
+    public function crearActividad(Request $request)
+    {
+        if (session()->has('usuarioConectado')) {
             $idusuario = session('usuarioConectado')['idUsuario'];
             $periodos = Periodo::where('idUsuario', '=', $idusuario)->get();
             $lugares = Lugar::where('idUsuario', '=', $idusuario)->get();
-            return view('actividad.crearActividad',compact('periodos','lugares'));
-        }else{
-            abort(404);
+            return view('actividad.crearActividad', compact('periodos', 'lugares'));
+        } else {
+            return redirect()->route('menu');
         }
     }
 
@@ -51,10 +53,9 @@ class ActividadControlador extends Controller
 
         if ($validator->passes()) {
 
-            return response()->json(['success'=>'Actividad valida']);
-
-        }else{
-            return response()->json(['error'=>$validator->errors()]);
+            return response()->json(['success' => 'Actividad valida']);
+        } else {
+            return response()->json(['error' => $validator->errors()]);
         }
     }
 
@@ -68,44 +69,48 @@ class ActividadControlador extends Controller
         $actividad->idLugar = $request->idLugar;
         $actividad->idUsuario = session('usuarioConectado')['idUsuario'];
         $actividad->save();
-        return response()->json(['success'=>'Actividad registrada exitosamente']);
+        return response()->json(['success' => 'Actividad registrada exitosamente']);
     }
 
     public function editarActividad($idActividad)
     {
-        $idusuario = session('usuarioConectado')['idUsuario'];
-        $actividad = Actividad::where('idActividad',$idActividad)->first();
-        $periodos = Periodo::where('idUsuario', '=', $idusuario)->get();
-        $lugares = Lugar::where('idUsuario', '=', $idusuario)->get();
+        if (session()->has('usuarioConectado')) {
+
+            $idusuario = session('usuarioConectado')['idUsuario'];
+            $actividad = Actividad::where('idActividad', $idActividad)->first();
+            $periodos = Periodo::where('idUsuario', '=', $idusuario)->get();
+            $lugares = Lugar::where('idUsuario', '=', $idusuario)->get();
 
 
-        return view('actividad.editarActividad', compact('actividad','periodos','lugares'));
+            return view('actividad.editarActividad', compact('actividad', 'periodos', 'lugares'));
+        } else {
+            return redirect()->route('menu');
+        }
     }
 
-    public function updateActividad(Request $request, $idActividad){
+    public function updateActividad(Request $request, $idActividad)
+    {
 
-        $actividadActualizado = Actividad::where('idActividad',$idActividad)->first();
+        $actividadActualizado = Actividad::where('idActividad', $idActividad)->first();
         $actividadActualizado->nombreActividad = $request->nombreActividad;
         $actividadActualizado->descripcionActividad = $request->descripcionActividad;
-        $periodo = Periodo::where('idPeriodo',$request->idPeriodo)->first();
+        $periodo = Periodo::where('idPeriodo', $request->idPeriodo)->first();
         $actividadActualizado->idPeriodo = $periodo->idPeriodo;
-        $lugar = Lugar::where('idLugar',$request->idLugar)->first();
+        $lugar = Lugar::where('idLugar', $request->idLugar)->first();
         $actividadActualizado->idLugar = $lugar->idLugar;
         $actividadActualizado->save();
-        return response()->json(['success'=>'Actividad editada exitosamente']);
-
+        return response()->json(['success' => 'Actividad editada exitosamente']);
     }
 
-    public function eliminarActividad($idActividad){
+    public function eliminarActividad($idActividad)
+    {
 
         try {
-            $actividad = Actividad::where('idActividad',$idActividad)->first();
+            $actividad = Actividad::where('idActividad', $idActividad)->first();
             $actividad->delete();
-            return response()->json(['success'=>'Actividad eliminada exitosamente']);
-        }
-        catch(\Exception  $e)
-        {
-            return response()->json(['error'=>$e->getMessage()]);
+            return response()->json(['success' => 'Actividad eliminada exitosamente']);
+        } catch (\Exception  $e) {
+            return response()->json(['error' => $e->getMessage()]);
         }
     }
 }

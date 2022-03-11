@@ -22,12 +22,14 @@ $(document).ready(function(){
             dangerMode: true,
           }).then(function(isConfirm) {
             if (isConfirm) {
+                $('.loading').attr("hidden",false);
                 $.ajax({
                     url: '/lugar/eliminar/'+idLugar,
                     type:'DELETE',
                     dataType: 'JSON',
                     //data: data,
                     success: function(data) {
+                        $('.loading').attr("hidden",true);
                         if(data.success){
                             swal({
                                 title: "Lugar eliminado",
@@ -42,7 +44,7 @@ $(document).ready(function(){
                         if(data.error){
                             swal({
                                 title: "Error al eliminar el periodo",
-                                text: data.error,
+                                text: "El periodo ya pertenece a alguna actividad.",
                                 icon: "error",
                                 type: "error"
                             }).then(function(){

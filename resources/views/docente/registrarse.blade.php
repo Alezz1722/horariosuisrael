@@ -48,6 +48,7 @@
                             <div class="form-group row">
                                 <label for="contrasenaUsuario" class="col-sm-3 col-form-label">Contraseña</label>
                                 <div class="col-sm-9">
+                                    <span id="btnClave" toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password" onclick="javascript: password = document.getElementById('contrasenaUsuario'); btnClave = document.getElementById('btnClave'); if (password.type == 'password') { password.type = 'text'; btnClave.classList.remove('fa-eye'); btnClave.classList.add('fa-eye-slash'); } else { password.type = 'password'; btnClave.classList.remove('fa-eye-slash'); btnClave.classList.add('fa-eye'); }"></span>
                                     <input type="password" class="form-control" id="contrasenaUsuario"
                                         name="contrasenaUsuario" placeholder="Ingrese la contraseña del docente"
                                         value="{{ old('contrasenaUsuario') }}" required>
@@ -57,6 +58,7 @@
                                 <label for="confContrasenaUsuario" class="col-sm-3 col-form-label">Confirmación
                                     contraseña</label>
                                 <div class="col-sm-9">
+                                    <span id="btnConfirmaClave" toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password" onclick="javascript: password = document.getElementById('confContrasenaUsuario'); btnClave = document.getElementById('btnConfirmaClave'); if (password.type == 'password') { password.type = 'text'; btnClave.classList.remove('fa-eye'); btnClave.classList.add('fa-eye-slash'); } else { password.type = 'password'; btnClave.classList.remove('fa-eye-slash'); btnClave.classList.add('fa-eye'); }"></span>
                                     <input type="password" class="form-control" id="confContrasenaUsuario"
                                         name="confContrasenaUsuario" placeholder="Repita la contraseña del docente"
                                         value="{{ old('confContrasenaUsuario') }}" required>
